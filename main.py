@@ -6,7 +6,7 @@ Classe : 1G NSI
 Licence : GPL-3.0
 """
 
-from random import randint
+from random import randint, choice
 
 def askInt(question: str, mini=0, maxi=9999) -> int:
     isOk = False
@@ -28,11 +28,18 @@ def Jeu() -> None:
     print("Bienvenue sur l'excellente bataille navale !!")
     nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
     print("Génération du plateau")
-    bateaux_joueurs = {}
-    for i in range(1,nb_joueurs + 1):
-        bateaux_joueurs[i] = [(randint(0,5), randint(0,5)) for _ in range(3)]
-    print(bateaux_joueurs)
-
+    pos1 = (randint(0,5), randint(0,5))
+    if choice(["V", "H"]) == "V":
+        print("v")
+        pos2 = (pos1[0], pos1[1] + 1)
+        if pos2[1] > 5:
+            pos2[1] -= 2
+    else:
+        print("h")
+        pos2 = (pos1[0], pos1[1] + 1)
+        if pos2[1] > 5:
+            pos2[1] -= 2
+    print(pos1, pos2)
 if __name__ == '__main__':
     Jeu()
 
