@@ -26,7 +26,7 @@ def askInt(question: str, mini=0, maxi=9999) -> int:
 def Jeu() -> None:
     print("Bienvenue sur l'excellente bataille navale !!")
     nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
-
+    plateau = []
 
 if __name__ == '__main__':
     Jeu()
