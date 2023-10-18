@@ -7,6 +7,7 @@ Licence : GPL-3.0
 """
 
 from random import randint, choice
+from time import sleep
 
 def askInt(question: str, mini=0, maxi=9999) -> int:
     isOk = False
@@ -44,7 +45,7 @@ def generatePlate():
     #print(plate)
     return plate
 
-    
+
 
 def Jeu() -> None:
     print("Bienvenue sur l'excellente bataille navale !!")
@@ -53,7 +54,24 @@ def Jeu() -> None:
 
     for i in range(1, nb_joueurs + 1):
         plateau = generatePlate()
-        print('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n")
+        points = 0
+        print(f"\n----------------------------\n\nJoueur n°{i} : ")
+        print('\n '.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n",)
+        for j in range(1, 4):
+            print(f"Essai n{j}")
+            pos1 = askInt("x -> ", mini=1, maxi=5)
+            pos2 = askInt("y -> ", mini=1, maxi=5)
+            if plateau[pos2 - 1][pos1 - 1] == "#":
+                print("Touché !")
+                points += 1
+                if points == 2:
+                    points = 8
+            else:
+                print("Raté !")
+
+        print("")
+    
+    print("\n--------------------------------\n\nFin du jeu")
 
 
 if __name__ == '__main__':
