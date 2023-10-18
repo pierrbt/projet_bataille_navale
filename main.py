@@ -27,10 +27,10 @@ def generatePlate():
     plate = []
 
     if choice(["V", "H"]) == "V":
-        pos1 = (randint(0,4), randint(0,5))
+        pos1 = (randint(0,4), randint(0,3))
         pos2 = (pos1[0], pos1[1] + 1)
     else:
-        pos1 = (randint(0,5), randint(0,4))
+        pos1 = (randint(0,3), randint(0,4))
         pos2 = (pos1[0] + 1, pos1[1])
 
     for i in range(5):
@@ -53,8 +53,7 @@ def Jeu() -> None:
 
     for i in range(1, nb_joueurs + 1):
         plateau = generatePlate()
-        for row in plateau:
-            print(' '.join(row), end="\n\n")
+        print('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n")
 
 
 if __name__ == '__main__':
