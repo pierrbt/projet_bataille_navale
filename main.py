@@ -23,23 +23,40 @@ def askInt(question: str, mini=0, maxi=9999) -> int:
             print("Ceci n'est pas un entier !")
     return number
 
+def generatePlate():
+    plate = []
+
+    if choice(["V", "H"]) == "V":
+        pos1 = (randint(0,4), randint(0,5))
+        pos2 = (pos1[0], pos1[1] + 1)
+    else:
+        pos1 = (randint(0,5), randint(0,4))
+        pos2 = (pos1[0] + 1, pos1[1])
+
+    for i in range(5):
+        row = []
+        for j in range(5):
+            if (i,j) == pos1 or (i,j) == pos2:
+                row.append("#")
+            else:
+                row.append("-")
+        plate.append(row)
+    #print(plate)
+    return plate
+
+    
 
 def Jeu() -> None:
     print("Bienvenue sur l'excellente bataille navale !!")
     nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
     print("Génération du plateau")
-    pos1 = (randint(0,5), randint(0,5))
-    if choice(["V", "H"]) == "V":
-        print("v")
-        pos2 = (pos1[0], pos1[1] + 1)
-        if pos2[1] > 5:
-            pos2[1] -= 2
-    else:
-        print("h")
-        pos2 = (pos1[0], pos1[1] + 1)
-        if pos2[1] > 5:
-            pos2[1] -= 2
-    print(pos1, pos2)
+
+    for i in range(1, nb_joueurs + 1):
+        plateau = generatePlate()
+        for row in plateau:
+            print(' '.join(row), end="\n\n")
+
+
 if __name__ == '__main__':
     Jeu()
 
