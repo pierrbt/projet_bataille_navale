@@ -76,5 +76,9 @@ def Jeu() -> None:
 
 if __name__ == '__main__':
     Jeu()
+    print("Bienvenue sur l'excellente bataille navale !!")
+    nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
+    jouerUnePartie(nb_joueurs)
+
 
 # main.py
