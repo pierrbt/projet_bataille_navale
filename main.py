@@ -29,7 +29,6 @@ def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de joue
                 print("Touché !")
                 points += 1
                 plateau[pos1][pos2] = "X"
-                # Get nearest # to pos1, pos2 in order to see if it is touched or destroyed
                 delta = getNearestBoatDelta(plateau, (pos1, pos2))
                 if delta > 1:
                     print("Coulé !")
