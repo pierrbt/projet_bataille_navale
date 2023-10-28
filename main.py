@@ -45,7 +45,68 @@ def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de joue
 if __name__ == '__main__':
     print("Bienvenue sur l'excellente bataille navale !!")
     nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
-    jouerUnePartie(nb_joueurs)
+
+    wantToContinue = True
+    points_totaux = [0 for _ in range(nb_joueurs)]
+
+    while wantToContinue:
+        points = jouerUnePartie(nb_joueurs)
+        for i,pts in enumerate(points):
+            points_totaux[i] += pts
+
+        wantToContinue = input("\nVoulez-vous continuer (o/n) -> ") == "o"
+    print("\nVoici le résumé des scores : ")
+    for joueur, points in enumerate(points_totaux):
+        print(f"Joueur {joueur + 1} : {points} points")
+
+    gagnants = []
+    maxi = max(points_totaux)
+    for index, points in enumerate(points_totaux):
+        if points == maxi:
+            gagnants.append(index)
+
+    if len(gagnants) == 1:
+        print(f"\nLe joueur {gagnants[0] + 1} a gagné")
+    else:
+        print(f"\nLes joueurs {','.join(gagnants)} ont gagné")
+
+
+
+    """customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
+    customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
+
+    app = customtkinter.CTk()  # create CTk window like you do with the Tk window
+    app.geometry("400x240")
+    app.title("Bataille navale")
+
+    app.minsize(400, 240)
+
+    text = customtkinter.CTkLabel(master=app, text="Bienvenue sur l'excellente bataille navale !!")
+    text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
+    text2 = customtkinter.CTkLabel(master=app, text="Entrez le nombre de joueur -> ")
+    text2.place(relx=0.3, rely=0.5, anchor=customtkinter.CENTER)
+
+    input = customtkinter.CTkComboBox(master=app, values=["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+    input.place(relx=0.7, rely=0.5, anchor=customtkinter.CENTER)
+
+
+    def button_function():
+        inp = int(input.get())
+        if 1 <= inp <= 10:
+            text2.destroy()
+            button.destroy()
+            input.destroy()
+            for _ in range(1, inp + 1):
+                text.configure(text=f"Joueur {_}")
+                text.update()
+                time.sleep(1)
+
+
+
+    button = customtkinter.CTkButton(master=app, text="Valider", command=button_function)
+    button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
+
+    app.mainloop()"""
 
 
 # main.py
