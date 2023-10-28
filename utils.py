@@ -41,30 +41,22 @@ def getIndexFromPosition(position: str) -> tuple:
 
 
 def getNearestBoatDelta(plateau: [[]], position: ()) -> int:
-    pos1,pos2 = position
-    delta = 5
-    row = []
+    pos1, pos2 = position
+    delta = 5  # Initialise la variable delta à une valeur maximale (5 dans ce cas)
 
-    for index, type in enumerate(plateau[pos2]):
-        if type == "#":
-            row.append(index)
-    if len(row) > 0:
-        for index in row:
+    # Calcul des bateaux dans la ligne de la position
+    for index, cell in enumerate(plateau[pos2]):
+        if cell == "#":
+            # Si un bateau est trouvé dans la même ligne
             if abs(index - pos1) < delta:
-                delta = abs(index - pos1)
+                delta = abs(index - pos1)  # Met à jour la valeur de delta si le bateau est plus proche
 
-    column_line = []
-    # Calculate all the cells in the column of pos1
-    for row in plateau:
-        column_line.append(row[pos1])
-
-    column = []
-    for index, type in enumerate(column_line):
-        if type == "#":
-            column.append(index)
-    if len(column) > 0:
-        for index in column:
+    # Calcul des bateaux dans la colonne de la position
+    for index, row in enumerate(plateau):
+        cell = row[pos1]
+        if cell == "#":
+            # Si un bateau est trouvé dans la même colonne
             if abs(index - pos2) < delta:
-                delta = abs(index - pos2)
+                delta = abs(index - pos2)  # Met à jour la valeur de delta si le bateau est plus proche
 
     return delta
