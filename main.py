@@ -39,9 +39,6 @@ def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de joue
                 plateau[pos1][pos2] = "O"
         print(f"Vous cumulez {points} points")
         points_joueurs.append(points)
-
-    
-    print("\n--------------------------------\n\nFin du jeu")
     return points_joueurs
 
 
