@@ -6,9 +6,10 @@ Classe : 1G NSI
 Licence : GPL-3.0
 """
 from typing import List
-
+import time
+import customtkinter
 from plate import generatePlate
-from utils import askInt, askPosition, getIndexFromPosition, getNearestBoatDelta
+from utils import askPosition, getIndexFromPosition, getNearestBoatDelta, askInt
 
 
 def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de jouer une partie
