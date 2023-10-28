@@ -27,12 +27,8 @@ def askInt(question: str, mini=0, maxi=9999) -> int:
 def generatePlate():
     plate = []
 
-    if choice(["V", "H"]) == "V":
-        pos1 = (randint(0,4), randint(0,3))
-        pos2 = (pos1[0], pos1[1] + 1)
-    else:
-        pos1 = (randint(0,3), randint(0,4))
-        pos2 = (pos1[0] + 1, pos1[1])
+from plate import generatePlate
+from utils import askInt, askPosition, getIndexFromPosition, getNearestBoatDelta
 
     for i in range(5):
         row = []
@@ -72,10 +68,10 @@ def Jeu() -> None:
         print("")
     
     print("\n--------------------------------\n\nFin du jeu")
+    return points_joueurs
 
 
 if __name__ == '__main__':
-    Jeu()
     print("Bienvenue sur l'excellente bataille navale !!")
     nb_joueurs = askInt("Entrez le nombre de joueur -> ", mini=2, maxi=9)
     jouerUnePartie(nb_joueurs)
