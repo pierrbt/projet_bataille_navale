@@ -5,42 +5,13 @@ Languages : Python
 Classe : 1G NSI
 Licence : GPL-3.0
 """
-
-from random import randint, choice
-from time import sleep
-
-def askInt(question: str, mini=0, maxi=9999) -> int:
-    isOk = False
-    number = 0
-    while not isOk:
-        inp = input(question)
-        if inp.isnumeric():
-            number = int(inp)
-            if number < mini or number > maxi:
-                print(f"La valeur est hors des bornes {mini}-{maxi}")
-            else:
-                isOk = True
-        else:
-            print("Ceci n'est pas un entier !")
-    return number
-
-def generatePlate():
-    plate = []
+from typing import List
 
 from plate import generatePlate
 from utils import askInt, askPosition, getIndexFromPosition, getNearestBoatDelta
 
-    for i in range(5):
-        row = []
-        for j in range(5):
-            if (i,j) == pos1 or (i,j) == pos2:
-                row.append("#")
-            else:
-                row.append("-")
-        plate.append(row)
-    #print(plate)
-    return plate
 
+def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de jouer une partie
 
 
 def Jeu() -> None:
