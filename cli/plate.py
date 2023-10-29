@@ -6,7 +6,6 @@ Classe : 1G NSI
 Licence : GPL-3.0
 """
 
-
 from random import randint, choice
 
 

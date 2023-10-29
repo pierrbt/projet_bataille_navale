@@ -6,10 +6,13 @@ Classe : 1G NSI
 Licence : GPL-3.0
 """
 import time
+
 import customtkinter
+from CTkTable import *
+
 from plate import generatePlate
 from utils import getNearestBoatDelta
-from CTkTable import *
+
 
 class Homepage(customtkinter.CTkFrame):
     def __init__(self, master, callback, **kwargs):
@@ -29,6 +32,7 @@ class Homepage(customtkinter.CTkFrame):
         self.button = customtkinter.CTkButton(master=self, text="Valider", command=callback)
         self.button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 
+
 class Game(customtkinter.CTkFrame):
     def __init__(self, master, players, **kwargs):
         super().__init__(master, **kwargs)
@@ -40,7 +44,6 @@ class Game(customtkinter.CTkFrame):
 
         self.player = 1
         self.round = 1
-
 
         self.tab = generatePlate()
         self.disp = [["-" for i in range(5)] for j in range(5)]
@@ -66,8 +69,7 @@ class Game(customtkinter.CTkFrame):
         else:
             self.disp[row][col] = "O"
 
-
-        #print(row, col)
+        # print(row, col)
         print(self.player, self.maxPlayers, self.round)
 
         if self.round == 3:
@@ -94,7 +96,6 @@ class Game(customtkinter.CTkFrame):
         self.table.update_values(values=self.disp)
 
 
-
 if __name__ == '__main__':
     print("Bienvenue sur l'excellente bataille navale !!")
 
@@ -107,11 +108,13 @@ if __name__ == '__main__':
 
     app.minsize(400, 240)
 
+
     def switchPage():
         global frame
         players = int(frame.input.get())
         frame.destroy()
         frame = Game(app, players)
+
 
     frame = Homepage(app, switchPage)
     globalPoints = []

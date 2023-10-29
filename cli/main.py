@@ -18,7 +18,7 @@ def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de joue
         plateau = generatePlate()
         points = 0
         print(f"\n----------------------------\n\nJoueur n°{i} : ")
-        print('\n '.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n",)
+        print('\n '.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n", )
         for j in range(1, 4):
             print(f"Essai n{j}")
             position = askPosition()
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     while wantToContinue:
         points = jouerUnePartie(nb_joueurs)
-        for i,pts in enumerate(points):
+        for i, pts in enumerate(points):
             points_totaux[i] += pts
 
         wantToContinue = input("\nVoulez-vous continuer (o/n) -> ") == "o"
