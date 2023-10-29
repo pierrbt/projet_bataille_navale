@@ -11,10 +11,23 @@ from plate import generatePlate
 from utils import getNearestBoatDelta
 from CTkTable import *
 
+class Homepage(customtkinter.CTkFrame):
+    def __init__(self, master, callback, **kwargs):
+        super().__init__(master, **kwargs)
+        self.callback = callback
+        self.configure(fg_color="transparent")
+        self.pack(fill=customtkinter.BOTH, expand=True)
 
-def jouerUnePartie(nb_joueurs: int) -> List[int]:  # Fonction qui permet de jouer une partie
+        self.text = customtkinter.CTkLabel(master=self, text="Bienvenue sur l'excellente bataille navale !!")
+        self.text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
+        self.text2 = customtkinter.CTkLabel(master=self, text="Entrez le nombre de joueur -> ")
+        self.text2.place(relx=0.3, rely=0.5, anchor=customtkinter.CENTER)
 
-    points_joueurs = []  # Liste des points des joueurs
+        self.input = customtkinter.CTkComboBox(master=self, values=["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+        self.input.place(relx=0.7, rely=0.5, anchor=customtkinter.CENTER)
+
+        self.button = customtkinter.CTkButton(master=self, text="Valider", command=callback)
+        self.button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 
     for i in range(1, nb_joueurs + 1):
         plateau = generatePlate()
