@@ -29,29 +29,70 @@ class Homepage(customtkinter.CTkFrame):
         self.button = customtkinter.CTkButton(master=self, text="Valider", command=callback)
         self.button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 
-    for i in range(1, nb_joueurs + 1):
-        plateau = generatePlate()
-        points = 0
-        print(f"\n----------------------------\n\nJoueur n°{i} : ")
-        print('\n '.join([''.join(['{:4}'.format(item) for item in row]) for row in plateau]), end="\n\n",)
-        for j in range(1, 4):
-            print(f"Essai n{j}")
-            position = askPosition()
-            pos1, pos2 = getIndexFromPosition(position)
-            if plateau[pos1][pos2] == "#":
-                print("Touché !")
-                points += 1
-                plateau[pos1][pos2] = "X"
-                delta = getNearestBoatDelta(plateau, (pos1, pos2))
-                if delta > 1:
-                    print("Coulé !")
-                    points += 7
+class Game(customtkinter.CTkFrame):
+    def __init__(self, master, players, **kwargs):
+        super().__init__(master, **kwargs)
+
+        self.maxPlayers = players
+        self.points = [0 for _ in range(self.maxPlayers)]
+        self.configure(fg_color="transparent")
+        self.pack(fill=customtkinter.BOTH, expand=True)
+
+        self.player = 1
+        self.round = 1
+
+
+        self.tab = generatePlate()
+        self.disp = [["-" for i in range(5)] for j in range(5)]
+
+        self.text = customtkinter.CTkLabel(master=self, text=f"Joueur {self.player} (essai {self.round})")
+        self.text.place(relx=0.5, rely=0.1, anchor=customtkinter.CENTER)
+
+        self.table = CTkTable(master=app, row=5, column=5, values=self.disp, hover_color="#555555",
+                              command=self.update_component, width=30, height=30)
+        self.table.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
+
+    def update_component(self, values):
+        row = values["row"]
+        col = values["column"]
+
+        if self.tab[row][col] == "#":
+            self.points[self.player - 1] += 1
+            self.tab[row][col] = "X"
+            self.disp[row][col] = "X"
+            delta = getNearestBoatDelta(self.tab, (row, col))
+            if delta > 1:
+                self.points[self.player - 1] += 7
+        else:
+            self.disp[row][col] = "O"
+
+
+        #print(row, col)
+        print(self.player, self.maxPlayers, self.round)
+
+        if self.round == 3:
+            self.table.update_values(values=self.disp)
+            self.table.update()
+            time.sleep(1)
+            if self.player < self.maxPlayers:
+                self.player += 1
+                self.round = 0
+                self.disp = [["-" for i in range(5)] for j in range(5)]
+                self.tab = generatePlate()
             else:
-                print("Raté !")
-                plateau[pos1][pos2] = "O"
-        print(f"Vous cumulez {points} points")
-        points_joueurs.append(points)
-    return points_joueurs
+                print("terminégros")
+                self.table.destroy()
+                self.text.configure(text="Fin de la partie !")
+                self.button = customtkinter.CTkButton(master=self, text="Recommencer", command=lambda: print("restart"))
+                self.button2 = customtkinter.CTkButton(master=self, text="Quitter", command=lambda: print("quit"))
+                self.button.place(relx=0.3, rely=0.8, anchor=customtkinter.CENTER)
+                self.button2.place(relx=0.7, rely=0.8, anchor=customtkinter.CENTER)
+                return
+        self.round += 1
+
+        self.text.configure(text=f"Joueur {self.player} (essai {self.round})")
+        self.table.update_values(values=self.disp)
+
 
 
 if __name__ == '__main__':
