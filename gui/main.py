@@ -5,11 +5,10 @@ Languages : Python
 Classe : 1G NSI
 Licence : GPL-3.0
 """
-from typing import List
 import time
 import customtkinter
 from plate import generatePlate
-from utils import askPosition, getIndexFromPosition, getNearestBoatDelta, askInt
+from utils import getNearestBoatDelta
 from CTkTable import *
 
 
