@@ -98,8 +98,6 @@ class Game(customtkinter.CTkFrame):
 if __name__ == '__main__':
     print("Bienvenue sur l'excellente bataille navale !!")
 
-    tableau = generatePlate()
-
     customtkinter.set_appearance_mode("dark")  # Modes: system (default), light, dark
     customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
