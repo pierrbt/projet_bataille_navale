@@ -116,19 +116,10 @@ if __name__ == '__main__':
     frame = Homepage(app, switchPage)
     globalPoints = []
 
-    input = customtkinter.CTkComboBox(master=app, values=["1", "2", "3", "4", "5", "6", "7", "8", "9"])
-    input.place(relx=0.7, rely=0.5, anchor=customtkinter.CENTER)
 
-    def displayCell(val: dict):
-        row = val.get("row")
-        column = val.get("column")
-        value = val.get("value")
 
-        print(f"Row: {row}, Column: {column}, Value: {value}")
 
-    table = CTkTable(master=app, row=5, column=5, values=display_table, hover_color="#555555", orientation="vertical", command=displayCell, justify="stretch")
-    table.place(relx=0.5, rely=0.8, anchor=customtkinter.CENTER)
-    # set the table square
+
 
 
 
