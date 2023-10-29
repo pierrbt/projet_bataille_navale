@@ -6,8 +6,6 @@ Classe : 1G NSI
 Licence : GPL-3.0
 """
 from typing import List
-import time
-import customtkinter
 from plate import generatePlate
 from utils import askPosition, getIndexFromPosition, getNearestBoatDelta, askInt
 
@@ -68,44 +66,5 @@ if __name__ == '__main__':
         print(f"\nLe joueur {gagnants[0] + 1} a gagné")
     else:
         print(f"\nLes joueurs {','.join(gagnants)} ont gagné")
-
-
-
-    """customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
-    customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
-
-    app = customtkinter.CTk()  # create CTk window like you do with the Tk window
-    app.geometry("400x240")
-    app.title("Bataille navale")
-
-    app.minsize(400, 240)
-
-    text = customtkinter.CTkLabel(master=app, text="Bienvenue sur l'excellente bataille navale !!")
-    text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
-    text2 = customtkinter.CTkLabel(master=app, text="Entrez le nombre de joueur -> ")
-    text2.place(relx=0.3, rely=0.5, anchor=customtkinter.CENTER)
-
-    input = customtkinter.CTkComboBox(master=app, values=["1", "2", "3", "4", "5", "6", "7", "8", "9"])
-    input.place(relx=0.7, rely=0.5, anchor=customtkinter.CENTER)
-
-
-    def button_function():
-        inp = int(input.get())
-        if 1 <= inp <= 10:
-            text2.destroy()
-            button.destroy()
-            input.destroy()
-            for _ in range(1, inp + 1):
-                text.configure(text=f"Joueur {_}")
-                text.update()
-                time.sleep(1)
-
-
-
-    button = customtkinter.CTkButton(master=app, text="Valider", command=button_function)
-    button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
-
-    app.mainloop()"""
-
 
 # main.py
