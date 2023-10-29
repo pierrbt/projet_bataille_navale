@@ -34,9 +34,9 @@ class Homepage(customtkinter.CTkFrame):
 
 
 class Game(customtkinter.CTkFrame):
-    def __init__(self, master, players, **kwargs):
+    def __init__(self, master, players, globalPoints, **kwargs):
         super().__init__(master, **kwargs)
-
+        self.globalPoints = globalPoints
         self.maxPlayers = players
         self.points = [0 for _ in range(self.maxPlayers)]
         self.configure(fg_color="transparent")
@@ -51,9 +51,13 @@ class Game(customtkinter.CTkFrame):
         self.text = customtkinter.CTkLabel(master=self, text=f"Joueur {self.player} (essai {self.round})")
         self.text.place(relx=0.5, rely=0.1, anchor=customtkinter.CENTER)
 
+
         self.table = CTkTable(master=app, row=5, column=5, values=self.disp, hover_color="#555555",
                               command=self.update_component, width=30, height=30)
         self.table.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
+
+        self.coup = customtkinter.CTkLabel(master=self)
+        self.coup.place(relx=0.5, rely=0.9, anchor=customtkinter.CENTER)
 
     def update_component(self, values):
         row = values["row"]
@@ -63,11 +67,14 @@ class Game(customtkinter.CTkFrame):
             self.points[self.player - 1] += 1
             self.tab[row][col] = "X"
             self.disp[row][col] = "X"
+            self.coup.configure(text="Touché !")
             delta = getNearestBoatDelta(self.tab, (row, col))
             if delta > 1:
                 self.points[self.player - 1] += 7
+                self.coup.configure(text="Coulé !")
         else:
             self.disp[row][col] = "O"
+            self.coup.configure(text="Raté !")
 
         # print(row, col)
         print(self.player, self.maxPlayers, self.round)
@@ -83,12 +90,32 @@ class Game(customtkinter.CTkFrame):
                 self.tab = generatePlate()
             else:
                 print("terminégros")
+                self.globalPoints.append(self.points)
                 self.table.destroy()
-                self.text.configure(text="Fin de la partie !")
+                self.text.configure(text=f"Fin de la partie {len(globalPoints)} !")
+                points = [[ f"Joueur {i + 1}", f"{self.points[i]}"] for i in range(self.maxPlayers)]
+                self.results = CTkTable(master=app, row=self.maxPlayers, column=2, values=points, hover_color="#555555",)
+                self.results.place(relx=0.5, rely=0.4, anchor=customtkinter.CENTER)
                 self.button = customtkinter.CTkButton(master=self, text="Recommencer", command=lambda: print("restart"))
-                self.button2 = customtkinter.CTkButton(master=self, text="Quitter", command=lambda: print("quit"))
-                self.button.place(relx=0.3, rely=0.8, anchor=customtkinter.CENTER)
-                self.button2.place(relx=0.7, rely=0.8, anchor=customtkinter.CENTER)
+                self.button2 = customtkinter.CTkButton(master=self, text="Quitter", command=lambda: (print("quit"), self.destroy()))
+
+                gagnants = []
+                maxi = max(self.points)
+                for index, points in enumerate(self.points):
+                    if points == maxi:
+                        gagnants.append(str(index + 1))
+
+                self.winner = customtkinter.CTkLabel(master=self)
+
+                if len(gagnants) == 1:
+                    self.winner.configure(text=f"Le joueur {gagnants[0]} a gagné")
+                else:
+                    self.winner.configure(text=f"Les joueurs {','.join(gagnants)} ont gagné")
+
+                self.winner.place(relx=0.5, rely=0.75, anchor=customtkinter.CENTER)
+
+                self.button.place(relx=0.3, rely=0.9, anchor=customtkinter.CENTER)
+                self.button2.place(relx=0.7, rely=0.9, anchor=customtkinter.CENTER)
                 return
         self.round += 1
 
@@ -110,15 +137,17 @@ if __name__ == '__main__':
 
 
     def switchPage():
-        global frame
+        global frame, globalPoints
         players = int(frame.input.get())
         frame.destroy()
-        frame = Game(app, players)
+        frame = Game(app, players, globalPoints)
 
 
     frame = Homepage(app, switchPage)
     globalPoints = []
 
     app.mainloop()
+
+    print(globalPoints)
 
 # main.py
