@@ -116,32 +116,6 @@ if __name__ == '__main__':
     frame = Homepage(app, switchPage)
     globalPoints = []
 
-
-
-
-
-
-
-
-    def button_function():
-        inp = int(input.get())
-        if 1 <= inp <= 10:
-            text2.destroy()
-            button.destroy()
-            input.destroy()
-            for _ in range(1, inp + 1):
-                text.configure(text=f"Joueur {_}")
-                text.update()
-                time.sleep(1)
-
-
-
-    button = customtkinter.CTkButton(master=app, text="Valider", command=button_function)
-    button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
-
     app.mainloop()
-
-
-
 
 # main.py
