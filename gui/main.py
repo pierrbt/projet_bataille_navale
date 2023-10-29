@@ -107,19 +107,14 @@ if __name__ == '__main__':
 
     app.minsize(400, 240)
 
-    text = customtkinter.CTkLabel(master=app, text="Bienvenue sur l'excellente bataille navale !!")
-    text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
-    text2 = customtkinter.CTkLabel(master=app, text="Entrez le nombre de joueur -> ")
-    text2.place(relx=0.3, rely=0.5, anchor=customtkinter.CENTER)
+    def switchPage():
+        global frame
+        players = int(frame.input.get())
+        frame.destroy()
+        frame = Game(app, players)
 
-    display_table = [list("/ABCDE")]
-    for i, row in enumerate(tableau):
-        line = [str(i + 1)]
-        for j in row:
-            line.append(j)
-        display_table.append(line)
-    for row in display_table:
-        print(row)
+    frame = Homepage(app, switchPage)
+    globalPoints = []
 
     input = customtkinter.CTkComboBox(master=app, values=["1", "2", "3", "4", "5", "6", "7", "8", "9"])
     input.place(relx=0.7, rely=0.5, anchor=customtkinter.CENTER)
