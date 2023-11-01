@@ -42,6 +42,8 @@ if __name__ == '__main__':
     def switchPage():
         global frame, globalPoints, players
         players = int(frame.input.get())
+        if not 1 <= players <= 9:
+            return
         frame.destroy()
         frame = Game(app, players, globalPoints, restart, quit)
 
