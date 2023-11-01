@@ -3,8 +3,8 @@ import time
 import customtkinter
 from CTkTable import *
 
-from ..plate import generatePlate
-from ..utils import getNearestBoatDelta
+from gui.plate import generatePlate
+from gui.utils import getNearestBoatDelta
 
 
 class Game(customtkinter.CTkFrame):
