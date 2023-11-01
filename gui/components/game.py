@@ -67,7 +67,7 @@ class Game(customtkinter.CTkFrame):
                 self.coup.destroy()
                 self.text.configure(text=f"Fin de la partie {len(self.globalPoints)} !")
                 points = [[f"Joueur {i + 1}", f"{self.points[i]}"] for i in range(self.maxPlayers)]
-                self.results = CTkTable(master=app, row=self.maxPlayers, column=2, values=points,
+                self.results = CTkTable(master=self, row=self.maxPlayers, column=2, values=points,
                                         hover_color="#555555", )
                 self.results.place(relx=0.5, rely=0.4, anchor=customtkinter.CENTER)
                 self.button = customtkinter.CTkButton(master=self, text="Recommencer", command=self.restart)
