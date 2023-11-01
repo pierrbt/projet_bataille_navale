@@ -1,3 +1,11 @@
+"""
+Projet : Bataille Navale
+Auteurs : Pierre BIDET, Anaëlle BOUSSIN
+Languages : Python
+Classe : 1G NSI
+Licence : GPL-3.0
+"""
+
 import time
 
 import customtkinter
