@@ -46,7 +46,7 @@ if __name__ == '__main__':
         frame = Game(app, players, globalPoints, restart, quit)
 
 
-    frame: Homepage = Homepage(app, switchPage)  # On crée la frame de la page d'accueil
+    frame = Homepage(app, switchPage)  # On crée la frame de la page d'accueil
     globalPoints = []  # On crée une liste vide qui contiendra les points de chaque joueur
     players = 1  # On initialise le nombre de joueurs à 1
 
