@@ -34,7 +34,7 @@ class Game(customtkinter.CTkFrame):
                               command=self.update_component, width=30, height=30)
         self.table.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
 
-        self.coup = customtkinter.CTkLabel(master=self)
+        self.coup = customtkinter.CTkLabel(master=self, text="Cliquez sur une case pour commencer")
         self.coup.place(relx=0.5, rely=0.9, anchor=customtkinter.CENTER)
 
     def update_component(self, values):
@@ -57,12 +57,13 @@ class Game(customtkinter.CTkFrame):
         if self.round == 3:
             self.table.update_values(values=self.disp)
             self.table.update()
-            time.sleep(1)
+            time.sleep(.6)
             if self.player < self.maxPlayers:
                 self.player += 1
                 self.round = 0
                 self.disp = [["-" for i in range(5)] for j in range(5)]
                 self.tab = generatePlate()
+                self.coup.configure(text="Cliquez sur une case pour commencer")
             else:
                 self.globalPoints.append(self.points)
                 self.table.destroy()
