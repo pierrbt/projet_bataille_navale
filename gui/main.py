@@ -24,14 +24,12 @@ if __name__ == '__main__':
 
     app.minsize(400, 240)  # Taille minimale de la fenêtre
 
-
     # Fonctions de callback
     def quit():
         print("Quitting...")
         global frame, globalPoints
         frame.destroy()
         frame = Leaderboard(app, globalPoints)
-        pass
 
 
     def restart():
