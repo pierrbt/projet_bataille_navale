@@ -12,3 +12,13 @@ pyinstaller --noconfirm --onedir --windowed --add-data "C:\Users\pierr\AppData\L
 ```
 
 Vous devrez l'adapter avec votre chemin vers customtkinter et CtkTable, ainsi que le chemin vers main.py.
+
+
+# Informations sur le projet
+
+Projet : Bataille Navale
+Auteurs : Pierre BIDET, Anaëlle BOUSSIN
+Languages : Python
+Classe : 1G NSI
+Licence : GPL-3.0
+
