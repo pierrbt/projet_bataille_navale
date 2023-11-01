@@ -11,6 +11,7 @@ Chaque partie est composée de plusieurs fichiers :
 - `main.py` : Le fichier principal, contenant le code principal du jeu
 - `plate.py` : Le fichier contenant les fonctions de génération de plateau
 - `utils.py` : Le fichier contenant les fonctions utilitaires
+- `components/` : Le dossier contenant les composants graphiques (gui uniquement)
 
 ## Auteurs
 - Pierre BIDET
