@@ -5,7 +5,6 @@ from CTkTable import *
 class Leaderboard(customtkinter.CTkFrame):
     def __init__(self, master, globalPoints, **kwargs):
         super().__init__(master, **kwargs)
-        print(globalPoints)
         playerPoints = [0 for _ in range(len(globalPoints[0]))]
         for game in globalPoints:
             for index, points in enumerate(game):
