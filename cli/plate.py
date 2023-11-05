@@ -9,8 +9,8 @@ Licence : GPL-3.0
 from random import randint, choice
 
 
-def generatePlate():
-    plate = []
+def generatePlate():  # Génère un plateau de jeu
+    plate = []  # Initialise le plateau de jeu
     orientation = choice(["V", "H"])  # On choisit aléatoirement l'orientation du bateau n°1
 
     if orientation == "V":
