@@ -6,8 +6,8 @@ Vous trouverez la version graphique, totalement fonctionelle et fidèle aux règ
 
 # Informations sur le projet
 
-Projet : Bataille Navale
-Auteurs : Pierre BIDET, Anaëlle BOUSSIN
-Languages : Python
-Classe : 1G NSI
-Licence : GPL-3.0
+- Projet : Bataille Navale
+- Auteurs : Pierre BIDET, Anaëlle BOUSSIN
+- Languages : Python
+- Classe : 1G NSI
+- Licence : GPL-3.0
