@@ -1,7 +1,9 @@
 # Bataille navale
 
 Voici le projet bataille navale, deuxième projet de NSI en 1G SPE NSI.
-Veuillez lire la (fiche de projet)[https://docs.google.com/document/d/1riDNvgQS0Sdhk8hi8XL-WjN9lX2G-O65f6PdLyULSZk/edit?usp=sharing] pour plus d'informations sur le projet.
+Veuillez lire la [fiche de projet](https://docs.google.com/document/d/1riDNvgQS0Sdhk8hi8XL-WjN9lX2G-O65f6PdLyULSZk/edit?usp=sharing) pour plus d'informations sur le projet.
+
+
 Vous trouverez dans les dossiers `cli` et `gui` les deux versions du projet, qui contiennent un autre README avec des informations spécifiques à chaque version.
 
 ## Structure
