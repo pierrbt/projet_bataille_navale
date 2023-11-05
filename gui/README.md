@@ -16,9 +16,9 @@ Vous devrez l'adapter avec votre chemin vers customtkinter et CtkTable, ainsi qu
 
 # Informations sur le projet
 
-Projet : Bataille Navale
-Auteurs : Pierre BIDET, Anaëlle BOUSSIN
-Languages : Python
-Classe : 1G NSI
-Licence : GPL-3.0
+- Projet : Bataille Navale
+- Auteurs : Pierre BIDET, Anaëlle BOUSSIN
+- Languages : Python
+- Classe : 1G NSI
+- Licence : GPL-3.0
 
